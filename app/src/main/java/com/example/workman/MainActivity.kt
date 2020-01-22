@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // 툴바 타이틀 변경하기.
-        toolbar.title = "홈"
+        toolbar.title = "Workman"
         toolbar.setTitleTextColor(Color.WHITE)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

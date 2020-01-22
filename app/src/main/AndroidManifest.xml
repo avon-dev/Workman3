@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />   <!-- 절전모드에서도 실행되야하므로, WAKE_LOCK 권한이 필요하다. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 
     <application
         android:allowBackup="true"
@@ -16,7 +20,9 @@
         <activity android:name=".View.Joining_Work.Joining_Work" />
         <activity android:name=".View.Add_Work_Location.Add_Work_Location" />
         <activity android:name=".View.Create_Company.Create_Company" />
-        <activity android:name=".View.Create_Alarm.Create_Alarm" />
+        <activity android:name=".View.Create_Alarm.Create_Alarm" >
+
+        </activity>
         <activity android:name=".View.StartPage.StartPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +38,12 @@
         <activity android:name=".ScheduleListSet" />
         <activity android:name=".View.Login.LoginActivity" />
         <activity android:name=".MainActivity" />
+
+<!--        <receiver android:name=".AlarmReceiver" />-->
+<!--        <service-->
+<!--            android:name=".RingtoneService"-->
+<!--            android:enabled="true"></service>-->
+
     </application>
 
 </manifest>
