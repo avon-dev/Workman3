@@ -30,6 +30,11 @@ class ScheduleFragment : Fragment() {
     val cell = arrayListOf<Date>()
     val cell2 = arrayListOf<Date>()
     val cell3 = arrayListOf<Date>()
+    val cell4 = arrayListOf<Date>()
+    val cell5 = arrayListOf<Date>()
+    val calendar = currentDate.clone() as Calendar
+    var i : Int = 0
+    var j : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,15 +63,17 @@ class ScheduleFragment : Fragment() {
         // 달력부분
         dateFormat = DATE_FORMAT
 
-        val calendar = currentDate.clone() as Calendar
+
         // update 달력 타이틀
         val sdf : DateFormat = SimpleDateFormat(dateFormat)
+        rootView.calendar_current_title.setText(sdf.format(currentDate.time))
         rootView.calendar_test.setText(sdf.format(currentDate.time))
         rootView.calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
             currentDate.add(Calendar.MONTH,-1)
+            calendar_current_title.setText(sdf.format(currentDate.time))
             calendar_test.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
         }
@@ -74,50 +81,25 @@ class ScheduleFragment : Fragment() {
         // 다음달 클릭
         rootView.calendar_next_text.setOnClickListener {
             currentDate.add(Calendar.MONTH,1)
+            calendar_current_title.setText(sdf.format(currentDate.time))
             calendar_test.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
         }
+        // update 달력 타이틀 끝.
 
         // 셀채우기 시작
-        var i : Int = 0
-        while(cell.size < 11) {
-            if(i == 0){
-                cell.add(currentDate.time)
-            }
-            else {
-                calendar.set(Calendar.DAY_OF_MONTH, i)
-                cell.add(calendar.time)
-            }
-            i++
+
+        CalendarDay(cell,-1)
+        CalendarDay(cell2,-1)
+        CalendarDay(cell3,-1)
+        CalendarDay(cell4,-1)
+
+        if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) {
+            CalendarDay(cell5,currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28)
         }
 
-        while(cell2.size < 11) {
-            if(i == 11){
-                cell2.add(currentDate.time)
-                calendar.set(Calendar.DAY_OF_MONTH, i)
-                cell2.add(calendar.time)
-            }
-            else {
-                calendar.set(Calendar.DAY_OF_MONTH, i)
-                cell2.add(calendar.time)
-            }
-            i++
-        }
 
-        while(cell3.size < 12) {
-            if(i == 21){
-                cell3.add(currentDate.time)
-                calendar.set(Calendar.DAY_OF_MONTH, i)
-                cell3.add(calendar.time)
-            }
-            else {
-                calendar.set(Calendar.DAY_OF_MONTH, i)
-                cell3.add(calendar.time)
-            }
-            i++
-        }
-
-        // 셀채우기 끝.
+        // 셀채우기 끝
 
 
         // 달력 리싸이클러뷰
@@ -133,9 +115,54 @@ class ScheduleFragment : Fragment() {
         rootView.calendar_recyclerview3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rootView.calendar_recyclerview3.adapter = CalendarAdapter(activity!!,cell3)
 
+        rootView.calendar_recyclerview4.setHasFixedSize(true)
+        rootView.calendar_recyclerview4.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview4.adapter = CalendarAdapter(activity!!,cell4)
+
+        rootView.calendar_recyclerview5.setHasFixedSize(true)
+        rootView.calendar_recyclerview5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview5.adapter = CalendarAdapter(activity!!,cell5)
+
         return rootView
     }
-
+    fun CalendarDay(list: ArrayList<Date>, a:Int){
+        if(a > 0) {
+            while (list.size < a+1) {
+                if (i == 29) {
+                    list.add(currentDate.time)
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                } else {
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                }
+                i++
+            }
+        }
+        else {
+            while (list.size < 8) {
+                if (i == 0) {
+                    list.add(currentDate.time)
+                } else if (i == 8) {
+                    list.add(currentDate.time)
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                } else if (i == 15) {
+                    list.add(currentDate.time)
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                } else if (i == 22) {
+                    list.add(currentDate.time)
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                } else {
+                    calendar.set(Calendar.DAY_OF_MONTH, i)
+                    list.add(calendar.time)
+                }
+                i++
+            }
+        }
+    }
 
 }
 

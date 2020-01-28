@@ -79,6 +79,18 @@
             android:id="@+id/calendar_recyclerview3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="2dp"
+            android:id="@+id/calendar_recyclerview4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="2dp"
+            android:id="@+id/calendar_recyclerview5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <com.github.clans.fab.FloatingActionMenu
