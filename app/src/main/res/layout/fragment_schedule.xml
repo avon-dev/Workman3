@@ -48,15 +48,38 @@
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="20dp" />
         </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/calendar_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="TextView1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/schedule"
-        android:textColor="@color/black"
-        android:textSize="50sp" />
+        <TextView
+            android:id="@+id/calendar_test2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="TextView2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="2dp"
+            android:id="@+id/calendar_recyclerview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="2dp"
+            android:id="@+id/calendar_recyclerview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="2dp"
+            android:id="@+id/calendar_recyclerview3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/f_schedule_Floating_menu"
