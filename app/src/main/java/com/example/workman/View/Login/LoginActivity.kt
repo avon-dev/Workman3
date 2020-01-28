@@ -1,6 +1,6 @@
 package com.example.workman.View.Login
 
-import com.example.workman.View.Register.RegisterActivity
+//import com.example.workman.View.Register.RegisterActivity
 
 
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.workman.MainActivity
 import com.example.workman.R
+import com.example.workman.View.Register.RegisterActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 

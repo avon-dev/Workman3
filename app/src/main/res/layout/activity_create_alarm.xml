@@ -23,34 +23,12 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
     <TimePicker
-        android:id="@+id/timePicker"
+        android:id="@+id/alarm_timepicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner">
 
     </TimePicker>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginTop="20dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView10"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="오전"-->
-<!--            android:textSize="18dp"-->
-<!--            android:layout_marginRight="10dp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView11"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="6:00"-->
-<!--            android:textSize="50dp" />-->
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +39,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="요일 반복"
             android:textSize="17dp" />
@@ -214,11 +192,19 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/button_make_alarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="생성하기"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"/>
+        android:text="생성하기" />
+    <Button
+        android:id="@+id/button_cancel_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:text="취소" />
 </LinearLayout>

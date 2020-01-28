@@ -1,18 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MenuFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:text="내 정보"
+        android:textSize="20dp"
+        android:id="@+id/myinfortext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/menu"
-        android:textSize="50sp"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        />
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/myprofileicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_person_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/myinfortext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/myprofilebutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="나의 프로필"
+        android:textSize="15dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/myprofileicon"
+        app:layout_constraintTop_toTopOf="@id/myprofileicon"
+        app:layout_constraintStart_toEndOf="@+id/myprofileicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <TextView
+        android:text="회사 정보"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/companyinfortext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myprofileicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/companyprofileicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_business_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/companyinfortext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/companyprofilebutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="회사 프로필"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/companyprofileicon"
+        app:layout_constraintTop_toTopOf="@id/companyprofileicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/employeeicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_people_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/companyprofileicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/employeebutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="직원"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/employeeicon"
+        app:layout_constraintTop_toTopOf="@id/employeeicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/vacationicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_local_airport_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/employeeicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/vacationbutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="휴가"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/vacationicon"
+        app:layout_constraintTop_toTopOf="@id/vacationicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/noticeicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_content_paste_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/vacationicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/noticebutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="공지사항"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/noticeicon"
+        app:layout_constraintTop_toTopOf="@id/noticeicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/groupicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_group_work_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/noticeicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/groupbutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="그룹"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/groupicon"
+        app:layout_constraintTop_toTopOf="@id/groupicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <TextView
+        android:text="앱 설정"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/appsettingtext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/appsettingicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_settings_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/appsettingtext"
+        app:layout_constraintTop_toBottomOf="@+id/appsettingtext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/appsettingbutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="앱 설정"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/appsettingicon"
+        app:layout_constraintTop_toTopOf="@id/appsettingicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <ImageView
+        android:id="@+id/companychangeicon"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_swap_horiz_black_24dp"
+        app:layout_constraintEnd_toEndOf="@+id/myinfortext"
+        app:layout_constraintTop_toBottomOf="@+id/appsettingicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/companychangebutton"
+        android:background="@drawable/bottomline"
+        style="?android:attr/borderlessButtonStyle"
+        android:gravity="start|center"
+        android:text="회사 변경"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/companychangeicon"
+        app:layout_constraintTop_toTopOf="@id/companychangeicon"
+        app:layout_constraintStart_toStartOf="@id/myprofilebutton"
+        app:layout_constraintEnd_toEndOf="@id/myprofilebutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

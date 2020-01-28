@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.workman.View.Alarm.AlarmFragment
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         // 툴바 타이틀 변경하기.
         toolbar.title = "Workman"
         toolbar.setTitleTextColor(Color.WHITE)
+
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setOnNavigationItemSelectedListener(navListener)

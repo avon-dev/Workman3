@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.RegisterActivity">
+    tools:context=".View.Register.RegisterActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -38,15 +38,15 @@
 
         <Button
             android:id="@+id/id_check_btn"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_width="73dp"
-            android:backgroundTint="#50A3F5"
-            android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="중복확인" />
+            android:backgroundTint="#50A3F5"
+            android:text="중복확인"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <EditText
@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
+        android:maxLength="12"
         android:ems="10"
         android:hint="비밀번호 입력"
         android:inputType="textPassword" />
@@ -65,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
+        android:maxLength="12"
         android:ems="10"
         android:hint="비밀번호 확인 입력"
         android:inputType="textPassword" />
@@ -93,7 +95,8 @@
             android:layout_weight="9"
             android:ems="10"
             android:hint="연락처 입력"
-            android:inputType="phone" />
+            android:inputType="number"
+            android:digits="0123456789"/>
 
         <Button
             android:id="@+id/phonenumber_check_btn"

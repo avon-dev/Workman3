@@ -65,6 +65,5 @@ class ScheduleListSet : AppCompatActivity() {
             }
         }
 
-
     }
 }

@@ -2,6 +2,7 @@ package com.example.workman
 
 
 import android.graphics.Color
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,7 +25,6 @@ class MenuFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false)
-
 
     }
 
