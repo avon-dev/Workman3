@@ -27,12 +27,12 @@ class ScheduleFragment : Fragment() {
     val DATE_FORMAT : String = "yyyy MMMM"
     var dateFormat : String = ""
     val currentDate = Calendar.getInstance()
-    val cell = arrayListOf<Date>()
-    val cell2 = arrayListOf<Date>()
-    val cell3 = arrayListOf<Date>()
-    val cell4 = arrayListOf<Date>()
-    val cell5 = arrayListOf<Date>()
-    val calendar = currentDate.clone() as Calendar
+    var cell = arrayListOf<Date>()
+    var cell2 = arrayListOf<Date>()
+    var cell3 = arrayListOf<Date>()
+    var cell4 = arrayListOf<Date>()
+    var cell5 = arrayListOf<Date>()
+    var calendar = currentDate.clone() as Calendar
     var i : Int = 0
     var j : Int = 0
 
@@ -70,19 +70,53 @@ class ScheduleFragment : Fragment() {
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
+            //달력 변수들 초기화
+            i = 0
+            cell.clear()
+            cell2.clear()
+            cell3.clear()
+            cell4.clear()
+            cell5.clear()
+
+            // 타이틀부분
             currentDate.add(Calendar.MONTH,-1)
+            calendar = currentDate.clone() as Calendar
             calendar_current_title.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
+
+            // 달력 최종호출
+            CalendarGet(rootView)
         }
 
         // 다음달 클릭
         rootView.calendar_next_text.setOnClickListener {
+            //달력 변수들 초기화
+            i = 0
+            cell.clear()
+            cell2.clear()
+            cell3.clear()
+            cell4.clear()
+            cell5.clear()
+
+            // 타이틀부분
             currentDate.add(Calendar.MONTH,1)
+            calendar = currentDate.clone() as Calendar
             calendar_current_title.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
+
+            // 달력 최종호출
+            CalendarGet(rootView)
         }
         // update 달력 타이틀 끝.
 
+        // 달력 최종호출
+        CalendarGet(rootView)
+
+        return rootView
+    }
+
+    //달력 최종호출
+    fun CalendarGet(rootView:View) {
         // 셀채우기 시작
         CalendarDay(cell,-1)
         CalendarDay(cell2,-1)
@@ -95,8 +129,6 @@ class ScheduleFragment : Fragment() {
 
         // 달력 리싸이클러뷰
         CalendarRecycler(rootView)
-
-        return rootView
     }
 
     // 달력 리싸이클러뷰
@@ -122,7 +154,7 @@ class ScheduleFragment : Fragment() {
         rootView.calendar_recyclerview5.adapter = CalendarAdapter(activity!!,cell5)
     }
 
-    // 달력 채워넣기.
+    // 달력 채워넣기. (셀채우기, 1주차부터 5주차까지 각 일수 채우기)
     fun CalendarDay(list: ArrayList<Date>, a:Int){
         if(a > 0) { // 달력 5주차부터는 일수에 따라 달라야댐.
             while (list.size < a+1) {
@@ -190,22 +222,22 @@ class CalendarAdapter(private val context: Context, private val list: ArrayList<
         //holder.day_of_week.setText(""+sdf.format(list[position].time))
         //holder.day.setText(""+list[position].getDay())
 
-        // 요일 색깔넣기
-        if(sdf2.format(calendar.time).equals("토")) {
-            holder.day_of_week.setTextColor(Color.BLUE)
-        }else if(sdf2.format(calendar.time).equals("일")){
-            holder.day_of_week.setTextColor(Color.RED)
-        }else {
 
-        }
 
         // 날짜&요일 넣기
         if(position == 0) {
             holder.day.setText("일자")
             holder.day_of_week.setText("요일")
         }else{
+            // 요일 색깔넣기
+            if(sdf2.format(calendar.time).equals("토")) {
+                holder.day_of_week.setTextColor(Color.BLUE)
+            }else if(sdf2.format(calendar.time).equals("일")){
+                holder.day_of_week.setTextColor(Color.RED)
+            }
             holder.day.setText(sdf.format(list[position].time))
             holder.day_of_week.setText(sdf2.format(calendar.time))
+
         }
 
     }
