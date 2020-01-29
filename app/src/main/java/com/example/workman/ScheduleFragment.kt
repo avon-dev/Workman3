@@ -13,6 +13,8 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workman.Adapter.GroupCalendarAdapter
+import com.example.workman.Model.GroupCalendar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import kotlinx.android.synthetic.main.fragment_schedule.view.*
@@ -35,6 +37,8 @@ class ScheduleFragment : Fragment() {
     var calendar = currentDate.clone() as Calendar
     var i : Int = 0
     var j : Int = 0
+
+    var group = arrayListOf<GroupCalendar>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,8 +116,18 @@ class ScheduleFragment : Fragment() {
         // 달력 최종호출
         CalendarGet(rootView)
 
+        // 그룹 부분 파트
+        while (group.size < 3) {
+            group.add(GroupCalendar(1))
+        }
+
+        rootView.calendar_recyclerview_group1.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group1.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group1.adapter = GroupCalendarAdapter(activity!!,group)
+
         return rootView
     }
+    // 메인 끝@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     //달력 최종호출
     fun CalendarGet(rootView:View) {
@@ -232,8 +246,10 @@ class CalendarAdapter(private val context: Context, private val list: ArrayList<
             // 요일 색깔넣기
             if(sdf2.format(calendar.time).equals("토")) {
                 holder.day_of_week.setTextColor(Color.BLUE)
+                holder.day.setTextColor(Color.BLUE)
             }else if(sdf2.format(calendar.time).equals("일")){
                 holder.day_of_week.setTextColor(Color.RED)
+                holder.day.setTextColor(Color.RED)
             }
             holder.day.setText(sdf.format(list[position].time))
             holder.day_of_week.setText(sdf2.format(calendar.time))
