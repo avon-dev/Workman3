@@ -47,7 +47,7 @@ class ScheduleFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_schedule, container, false)
 
-        // 플로팅액션버튼
+        // 플로팅액션버튼 부분
         // 근무조 설정
         rootView.f_schedule_Floating_menu_item1.setOnClickListener {
             val nextIntent = Intent(activity, ScheduleGroupSet1::class.java)
@@ -60,21 +60,18 @@ class ScheduleFragment : Fragment() {
             startActivity(nextIntent)
         }
 
-        // 달력부분
+        // 달력부분(보이는 형식)
         dateFormat = DATE_FORMAT
-
 
         // update 달력 타이틀
         val sdf : DateFormat = SimpleDateFormat(dateFormat)
         rootView.calendar_current_title.setText(sdf.format(currentDate.time))
-        rootView.calendar_test.setText(sdf.format(currentDate.time))
         rootView.calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
             currentDate.add(Calendar.MONTH,-1)
             calendar_current_title.setText(sdf.format(currentDate.time))
-            calendar_test.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
         }
 
@@ -82,27 +79,28 @@ class ScheduleFragment : Fragment() {
         rootView.calendar_next_text.setOnClickListener {
             currentDate.add(Calendar.MONTH,1)
             calendar_current_title.setText(sdf.format(currentDate.time))
-            calendar_test.setText(sdf.format(currentDate.time))
             calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
         }
         // update 달력 타이틀 끝.
 
         // 셀채우기 시작
-
         CalendarDay(cell,-1)
         CalendarDay(cell2,-1)
         CalendarDay(cell3,-1)
         CalendarDay(cell4,-1)
-
-        if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) {
+        if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) { // 마지막주차가 28일보다 높다면...
             CalendarDay(cell5,currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28)
         }
-
-
         // 셀채우기 끝
 
-
         // 달력 리싸이클러뷰
+        CalendarRecycler(rootView)
+
+        return rootView
+    }
+
+    // 달력 리싸이클러뷰
+    fun CalendarRecycler(rootView:View){
         rootView.calendar_recyclerview1.setHasFixedSize(true)
         rootView.calendar_recyclerview1.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rootView.calendar_recyclerview1.adapter = CalendarAdapter(activity!!,cell)
@@ -122,9 +120,8 @@ class ScheduleFragment : Fragment() {
         rootView.calendar_recyclerview5.setHasFixedSize(true)
         rootView.calendar_recyclerview5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
         rootView.calendar_recyclerview5.adapter = CalendarAdapter(activity!!,cell5)
-
-        return rootView
     }
+
     // 달력 채워넣기.
     fun CalendarDay(list: ArrayList<Date>, a:Int){
         if(a > 0) { // 달력 5주차부터는 일수에 따라 달라야댐.
