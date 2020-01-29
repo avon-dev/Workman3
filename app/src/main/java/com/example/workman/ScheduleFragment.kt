@@ -125,8 +125,9 @@ class ScheduleFragment : Fragment() {
 
         return rootView
     }
+    // 달력 채워넣기.
     fun CalendarDay(list: ArrayList<Date>, a:Int){
-        if(a > 0) {
+        if(a > 0) { // 달력 5주차부터는 일수에 따라 달라야댐.
             while (list.size < a+1) {
                 if (i == 29) {
                     list.add(currentDate.time)
@@ -139,7 +140,7 @@ class ScheduleFragment : Fragment() {
                 i++
             }
         }
-        else {
+        else { // 달력 1~4주차까지는 똑같음.
             while (list.size < 8) {
                 if (i == 0) {
                     list.add(currentDate.time)
@@ -166,6 +167,7 @@ class ScheduleFragment : Fragment() {
 
 }
 
+// 달력 리싸이클러뷰.
 class CalendarAdapter(private val context: Context, private val list: ArrayList<Date>) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>(){
     val DATE_FORMAT : String = "d"
     val DATE_FORMAT2 : String = "E"
