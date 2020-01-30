@@ -26,19 +26,27 @@ import java.util.*
  * 근무일정
  */
 class ScheduleFragment : Fragment() {
+    // 달력 부분 생성
     val DATE_FORMAT : String = "yyyy MMMM"
     var dateFormat : String = ""
     val currentDate = Calendar.getInstance()
+    var calendar = currentDate.clone() as Calendar
+    // 달력 5개 변수들
     var cell = arrayListOf<Date>()
     var cell2 = arrayListOf<Date>()
     var cell3 = arrayListOf<Date>()
     var cell4 = arrayListOf<Date>()
     var cell5 = arrayListOf<Date>()
-    var calendar = currentDate.clone() as Calendar
+
     var i : Int = 0
     var j : Int = 0
 
+    // 그룹 5개 변수들
     var group = arrayListOf<GroupCalendar>()
+    var group2 = arrayListOf<GroupCalendar>()
+    var group3 = arrayListOf<GroupCalendar>()
+    var group4 = arrayListOf<GroupCalendar>()
+    var group5 = arrayListOf<GroupCalendar>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,7 +78,6 @@ class ScheduleFragment : Fragment() {
         // update 달력 타이틀
         val sdf : DateFormat = SimpleDateFormat(dateFormat)
         rootView.calendar_current_title.setText(sdf.format(currentDate.time))
-        rootView.calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
@@ -86,7 +93,6 @@ class ScheduleFragment : Fragment() {
             currentDate.add(Calendar.MONTH,-1)
             calendar = currentDate.clone() as Calendar
             calendar_current_title.setText(sdf.format(currentDate.time))
-            calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
 
             // 달력 최종호출
             CalendarGet(rootView)
@@ -106,7 +112,6 @@ class ScheduleFragment : Fragment() {
             currentDate.add(Calendar.MONTH,1)
             calendar = currentDate.clone() as Calendar
             calendar_current_title.setText(sdf.format(currentDate.time))
-            calendar_test2.setText("월일수 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH))
 
             // 달력 최종호출
             CalendarGet(rootView)
@@ -118,12 +123,35 @@ class ScheduleFragment : Fragment() {
 
         // 그룹 부분 파트
         while (group.size < 3) {
-            group.add(GroupCalendar(1))
+            group.add(GroupCalendar(0))
+            group2.add(GroupCalendar(0))
+            group3.add(GroupCalendar(0))
+            group4.add(GroupCalendar(0))
+
+            if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) { // 마지막주차가 28일보다 높다면...
+                group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28))
+            }
         }
 
         rootView.calendar_recyclerview_group1.setHasFixedSize(true)
         rootView.calendar_recyclerview_group1.layoutManager = LinearLayoutManager(activity)
         rootView.calendar_recyclerview_group1.adapter = GroupCalendarAdapter(activity!!,group)
+
+        rootView.calendar_recyclerview_group2.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group2.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group2.adapter = GroupCalendarAdapter(activity!!,group2)
+
+        rootView.calendar_recyclerview_group3.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group3.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group3.adapter = GroupCalendarAdapter(activity!!,group3)
+
+        rootView.calendar_recyclerview_group4.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group4.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group4.adapter = GroupCalendarAdapter(activity!!,group4)
+
+        rootView.calendar_recyclerview_group5.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group5.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group5.adapter = GroupCalendarAdapter(activity!!,group5)
 
         return rootView
     }

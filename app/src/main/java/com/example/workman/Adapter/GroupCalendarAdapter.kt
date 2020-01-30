@@ -14,13 +14,13 @@ class GroupCalendarAdapter(private val context: Context, private val list: Array
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view : View?
         return when (viewType) {
-            1 -> {
+            0 -> { // 1~4주차가 까지 7개일때.
                 view = LayoutInflater.from(context).inflate(R.layout.item_view_group_calendar1,parent,false)
-                ViewHolder1(view)
+                ViewHolder0(view)
             }
-            2 -> {
+            3 -> { // 5주차가 31일, 즉 3개일때.
                 view = LayoutInflater.from(context).inflate(R.layout.item_view_group_calendar2,parent,false)
-                ViewHolder2(view)
+                ViewHolder3(view)
             }
             else -> throw RuntimeException("알 수 없는 뷰 타입 에러")
         }
@@ -33,11 +33,11 @@ class GroupCalendarAdapter(private val context: Context, private val list: Array
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val obj = list[position]
         when(obj.type) {
-            1 -> {
-                (holder as ViewHolder1)
+            0 -> {
+                (holder as ViewHolder0)
             }
-            2 -> {
-                (holder as ViewHolder2)
+            3 -> {
+                (holder as ViewHolder3)
             }
         }
     }
@@ -47,7 +47,7 @@ class GroupCalendarAdapter(private val context: Context, private val list: Array
     }
 
     // 7개일때의 평소타입
-    class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
+    class ViewHolder0(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
         var Group_Name : TextView
         var Group1 : TextView
         var Group2 : TextView
@@ -73,13 +73,17 @@ class GroupCalendarAdapter(private val context: Context, private val list: Array
     }
 
     // 31일 일때(3개)
-    class ViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
-        var day_of_week : TextView
-        var day : TextView
+    class ViewHolder3(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
+        var Group_Name2 : TextView
+        var Group2_1 : TextView
+        var Group2_2 : TextView
+        var Group2_3 : TextView
 
         init {
-            day_of_week = itemView.findViewById(R.id.ItemViewCalendar1_TextView2)
-            day = itemView.findViewById(R.id.ItemViewCalendar1_TextView1)
+            Group_Name2 = itemView.findViewById(R.id.ItemView_Group_Calendar2_TextView_name)
+            Group2_1 = itemView.findViewById(R.id.ItemView_Group_Calendar2_TextView1)
+            Group2_2 = itemView.findViewById(R.id.ItemView_Group_Calendar2_TextView2)
+            Group2_3 = itemView.findViewById(R.id.ItemView_Group_Calendar2_TextView3)
         }
         override fun onClick(v: View?) {
         }

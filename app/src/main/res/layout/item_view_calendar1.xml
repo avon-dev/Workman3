@@ -12,7 +12,7 @@
         android:id="@+id/ItemViewCalendar1_TextView1"
         android:layout_width="28dp"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
+        android:textSize="13dp"
         android:gravity="center"
         android:background="@android:color/holo_green_dark"
         android:text="00" />
@@ -21,7 +21,7 @@
         android:id="@+id/ItemViewCalendar1_TextView2"
         android:layout_width="28dp"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
+        android:textSize="13dp"
         android:gravity="center"
         android:background="@android:color/holo_green_light"
         android:text="요일" />

@@ -19,6 +19,7 @@
             android:orientation="vertical" >
 
             <LinearLayout
+                android:layout_margin="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -53,14 +54,8 @@
                     android:textSize="20dp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/calendar_test2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="TextView2" />
-
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="2dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:id="@+id/calendar_recyclerview1"
@@ -75,26 +70,63 @@
                 android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="2dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:id="@+id/calendar_recyclerview2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:id="@+id/calendar_recyclerview_group2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:id="@+id/calendar_recyclerview3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:id="@+id/calendar_recyclerview_group3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:id="@+id/calendar_recyclerview4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:id="@+id/calendar_recyclerview_group4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:id="@+id/calendar_recyclerview5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/calendar_recyclerview_group5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
