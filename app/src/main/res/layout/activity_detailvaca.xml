@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailvacaActivity">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="나의 프로필"
+        app:layout_constraintBottom_toBottomOf="@+id/view" android:id="@+id/textView3"/>
+
+    <ImageButton
+        android:background="@drawable/ic_chevron_left_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="55dp"
+        android:layout_height="55dp"/>
+
+    <View
+        android:layout_marginTop="55dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" android:id="@+id/view"/>
+
+    <TextView
+        android:id="@+id/vacanametext"
+        android:text="직원 이름"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="홍길동"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacanametext"
+        app:layout_constraintBottom_toBottomOf="@id/vacanametext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacanametext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view1"/>
+
+    <TextView
+        android:id="@+id/vacatypetext"
+        android:text="휴가 유형"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="연차"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacatypetext"
+        app:layout_constraintBottom_toBottomOf="@id/vacatypetext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacatypetext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view2"/>
+
+    <TextView
+        android:id="@+id/vacadatetext"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="start|center"
+        android:padding="10dp"
+        android:text="휴가 날짜"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/vacadate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vacadate" />
+
+    <TextView
+        android:minHeight="60dp"
+        android:scrollbars="vertical"
+        android:id="@+id/vacadate"
+        android:maxLines="3"
+        android:text="0000년 00월 00일 (월)"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacadate"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view3"/>
+
+    <TextView
+        android:id="@+id/vacastarttext"
+        android:text="시작 시간"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="00:00 AM"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacastarttext"
+        app:layout_constraintBottom_toBottomOf="@id/vacastarttext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacastarttext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view4"/>
+
+    <TextView
+        android:id="@+id/vacaendtext"
+        android:text="종료 시간"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="00:00 AM"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacaendtext"
+        app:layout_constraintBottom_toBottomOf="@id/vacaendtext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacaendtext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view5"/>
+
+    <TextView
+        android:id="@+id/vacasigntext"
+        android:text="승인 상태"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:textColor="@color/green"
+        android:text="연차"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacasigntext"
+        app:layout_constraintBottom_toBottomOf="@id/vacasigntext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacasigntext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view6"/>
+
+    <TextView
+        android:id="@+id/vacamanagertext"
+        android:text="승인 관리자"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="홍판서"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacamanagertext"
+        app:layout_constraintBottom_toBottomOf="@id/vacamanagertext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacamanagertext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view7"/>
+
+    <TextView
+        android:id="@+id/vacasigndatetext"
+        android:text="승인 날짜"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:text="0000년 00월 00일 (월) PM 8:30"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vacasigndatetext"
+        app:layout_constraintBottom_toBottomOf="@id/vacasigndatetext"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacasigndatetext"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view8"/>
+
+    <TextView
+        android:id="@+id/vacareasontext"
+        android:text="휴가 사유"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:gravity="start|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/vacareason"
+        android:hint="휴가 사유입니다."
+        android:textSize="15dp"
+        android:paddingHorizontal="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/vacareasontext"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"/>
+
+    <View
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacareason"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" android:id="@+id/view9"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

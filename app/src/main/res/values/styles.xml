@@ -13,6 +13,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
+<!--        <item name="colorPrimary">@color/neoMint</item>-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 

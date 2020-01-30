@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReqvacationActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 프로필"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/ic_chevron_left_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@null"
+        android:text="신청"
+        android:textColor="@color/transparentblue"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="55dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/RV_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/RV_calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:mcv_firstDayOfWeek="monday"
+                app:mcv_showOtherDates="defaults"
+                app:mcv_selectionColor="@color/green"/>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RV_calendarView" />
+
+            <TextView
+                android:id="@+id/vacatypetext"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="start|center"
+                android:padding="10dp"
+                android:text="휴가 유형"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:entries="@array/vacationtype"
+                app:layout_constraintBottom_toBottomOf="@+id/vacatypetext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vacatypetext" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vacatypetext" />
+
+            <TextView
+                android:id="@+id/vacastarttext"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="start|center"
+                android:padding="10dp"
+                android:text="시작 시간"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="AM 00:00"
+                android:timePickerMode="spinner"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/vacastarttext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vacastarttext" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vacastarttext" />
+
+            <TextView
+                android:id="@+id/vacaendtext"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="start|center"
+                android:padding="10dp"
+                android:text="종료 시간"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="AM 00:00"
+                android:timePickerMode="spinner"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/vacaendtext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vacaendtext" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vacaendtext" />
+
+            <EditText
+                android:hint="휴가 사유를 입력하십시오."
+                android:id="@+id/vacareason"
+                android:gravity="start"
+                android:textSize="15dp"
+                android:paddingHorizontal="10dp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
