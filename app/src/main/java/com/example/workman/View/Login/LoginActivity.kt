@@ -24,13 +24,15 @@ class LoginActivity : AppCompatActivity(), LoginContract.ILoginView {
         loginPresenter = LoginPresenter(this)
 
         //로그인 버튼 클릭event
-        login_btn.setOnClickListener{
-            loginPresenter.onLogin(login_email.text.toString(),login_password.text.toString())
+        login_btn.setOnClickListener {
+            loginPresenter.onLogin(login_email.text.toString(), login_password.text.toString())
         }
 
         register_btn.setOnClickListener {
-            val registerIntent = Intent(this,
-                RegisterActivity::class.java)
+            val registerIntent = Intent(
+                this,
+                RegisterActivity::class.java
+            )
             startActivity(registerIntent)
         }
     }

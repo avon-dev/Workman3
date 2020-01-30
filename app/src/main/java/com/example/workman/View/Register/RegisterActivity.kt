@@ -1,14 +1,20 @@
 package com.example.workman.View.Register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.example.workman.MainActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.example.workman.Network.ServiceApi
 import com.example.workman.R
 import com.example.workman.View.Login.LoginActivity
 import es.dmoral.toasty.Toasty
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_register.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class RegisterActivity : AppCompatActivity(), RegisterContract.IRegisterView {
     private lateinit var registerPresenter: RegisterContract.IRegisterPresenter
@@ -17,12 +23,18 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.IRegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+
         registerPresenter = RegisterPresenter(this)
 
         regster_complete_btn.setOnClickListener {
           registerPresenter.onRegister(register_email.text.toString(),register_password.text.toString(),register_password2.text.toString(),register_username.text.toString(),register_phonenumber.text.toString())
         }
+
+
+
     }
+
+
 
     //로그인 성공시 홈화면으로 이동
     override fun onRegisterSuccess(message: String) {
