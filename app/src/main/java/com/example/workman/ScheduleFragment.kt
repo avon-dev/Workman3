@@ -81,13 +81,8 @@ class ScheduleFragment : Fragment() {
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
-            //달력 변수들 초기화
-            i = 0
-            cell.clear()
-            cell2.clear()
-            cell3.clear()
-            cell4.clear()
-            cell5.clear()
+            // 달력 변수들 초기화
+            CalendarClear()
 
             // 타이틀부분
             currentDate.add(Calendar.MONTH,-1)
@@ -101,12 +96,7 @@ class ScheduleFragment : Fragment() {
         // 다음달 클릭
         rootView.calendar_next_text.setOnClickListener {
             //달력 변수들 초기화
-            i = 0
-            cell.clear()
-            cell2.clear()
-            cell3.clear()
-            cell4.clear()
-            cell5.clear()
+            CalendarClear()
 
             // 타이틀부분
             currentDate.add(Calendar.MONTH,1)
@@ -120,38 +110,6 @@ class ScheduleFragment : Fragment() {
 
         // 달력 최종호출
         CalendarGet(rootView)
-
-        // 그룹 부분 파트
-        while (group.size < 3) {
-            group.add(GroupCalendar(0))
-            group2.add(GroupCalendar(0))
-            group3.add(GroupCalendar(0))
-            group4.add(GroupCalendar(0))
-
-            if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) { // 마지막주차가 28일보다 높다면...
-                group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28))
-            }
-        }
-
-        rootView.calendar_recyclerview_group1.setHasFixedSize(true)
-        rootView.calendar_recyclerview_group1.layoutManager = LinearLayoutManager(activity)
-        rootView.calendar_recyclerview_group1.adapter = GroupCalendarAdapter(activity!!,group)
-
-        rootView.calendar_recyclerview_group2.setHasFixedSize(true)
-        rootView.calendar_recyclerview_group2.layoutManager = LinearLayoutManager(activity)
-        rootView.calendar_recyclerview_group2.adapter = GroupCalendarAdapter(activity!!,group2)
-
-        rootView.calendar_recyclerview_group3.setHasFixedSize(true)
-        rootView.calendar_recyclerview_group3.layoutManager = LinearLayoutManager(activity)
-        rootView.calendar_recyclerview_group3.adapter = GroupCalendarAdapter(activity!!,group3)
-
-        rootView.calendar_recyclerview_group4.setHasFixedSize(true)
-        rootView.calendar_recyclerview_group4.layoutManager = LinearLayoutManager(activity)
-        rootView.calendar_recyclerview_group4.adapter = GroupCalendarAdapter(activity!!,group4)
-
-        rootView.calendar_recyclerview_group5.setHasFixedSize(true)
-        rootView.calendar_recyclerview_group5.layoutManager = LinearLayoutManager(activity)
-        rootView.calendar_recyclerview_group5.adapter = GroupCalendarAdapter(activity!!,group5)
 
         return rootView
     }
@@ -169,31 +127,33 @@ class ScheduleFragment : Fragment() {
         }
         // 셀채우기 끝
 
+        // 그룹 채워넣기
+        CalendarGroupSet()
+
         // 달력 리싸이클러뷰
         CalendarRecycler(rootView)
     }
 
-    // 달력 리싸이클러뷰
-    fun CalendarRecycler(rootView:View){
-        rootView.calendar_recyclerview1.setHasFixedSize(true)
-        rootView.calendar_recyclerview1.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rootView.calendar_recyclerview1.adapter = CalendarAdapter(activity!!,cell)
+    // 그룹 부분 파트
+    fun CalendarGroupSet(){
+        group.add(GroupCalendar(0,"A조"))
+        group.add(GroupCalendar(0,"B조"))
+        group.add(GroupCalendar(0,"C조"))
+        group2.add(GroupCalendar(0,"A조"))
+        group2.add(GroupCalendar(0,"B조"))
+        group2.add(GroupCalendar(0,"C조"))
+        group3.add(GroupCalendar(0,"A조"))
+        group3.add(GroupCalendar(0,"B조"))
+        group3.add(GroupCalendar(0,"C조"))
+        group4.add(GroupCalendar(0,"A조"))
+        group4.add(GroupCalendar(0,"B조"))
+        group4.add(GroupCalendar(0,"C조"))
 
-        rootView.calendar_recyclerview2.setHasFixedSize(true)
-        rootView.calendar_recyclerview2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rootView.calendar_recyclerview2.adapter = CalendarAdapter(activity!!,cell2)
-
-        rootView.calendar_recyclerview3.setHasFixedSize(true)
-        rootView.calendar_recyclerview3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rootView.calendar_recyclerview3.adapter = CalendarAdapter(activity!!,cell3)
-
-        rootView.calendar_recyclerview4.setHasFixedSize(true)
-        rootView.calendar_recyclerview4.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rootView.calendar_recyclerview4.adapter = CalendarAdapter(activity!!,cell4)
-
-        rootView.calendar_recyclerview5.setHasFixedSize(true)
-        rootView.calendar_recyclerview5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
-        rootView.calendar_recyclerview5.adapter = CalendarAdapter(activity!!,cell5)
+        if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) { // 마지막주차가 28일보다 높다면...
+            group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,"A조"))
+            group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,"B조"))
+            group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,"C조"))
+        }
     }
 
     // 달력 채워넣기. (셀채우기, 1주차부터 5주차까지 각 일수 채우기)
@@ -234,6 +194,68 @@ class ScheduleFragment : Fragment() {
                 i++
             }
         }
+    }
+
+    // 달력 변수들 클리어
+    fun CalendarClear() {
+        //달력 변수들 초기화
+        i = 0
+        cell.clear()
+        cell2.clear()
+        cell3.clear()
+        cell4.clear()
+        cell5.clear()
+
+        group.clear()
+        group2.clear()
+        group3.clear()
+        group4.clear()
+        group5.clear()
+    }
+
+    // 달력 리싸이클러뷰
+    fun CalendarRecycler(rootView:View){
+        // 달력부분
+        rootView.calendar_recyclerview1.setHasFixedSize(true)
+        rootView.calendar_recyclerview1.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview1.adapter = CalendarAdapter(activity!!,cell)
+
+        rootView.calendar_recyclerview2.setHasFixedSize(true)
+        rootView.calendar_recyclerview2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview2.adapter = CalendarAdapter(activity!!,cell2)
+
+        rootView.calendar_recyclerview3.setHasFixedSize(true)
+        rootView.calendar_recyclerview3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview3.adapter = CalendarAdapter(activity!!,cell3)
+
+        rootView.calendar_recyclerview4.setHasFixedSize(true)
+        rootView.calendar_recyclerview4.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview4.adapter = CalendarAdapter(activity!!,cell4)
+
+        rootView.calendar_recyclerview5.setHasFixedSize(true)
+        rootView.calendar_recyclerview5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,false)
+        rootView.calendar_recyclerview5.adapter = CalendarAdapter(activity!!,cell5)
+
+        // 그룹부분
+        rootView.calendar_recyclerview_group1.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group1.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group1.adapter = GroupCalendarAdapter(activity!!,group)
+
+        rootView.calendar_recyclerview_group2.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group2.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group2.adapter = GroupCalendarAdapter(activity!!,group2)
+
+        rootView.calendar_recyclerview_group3.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group3.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group3.adapter = GroupCalendarAdapter(activity!!,group3)
+
+        rootView.calendar_recyclerview_group4.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group4.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group4.adapter = GroupCalendarAdapter(activity!!,group4)
+
+        rootView.calendar_recyclerview_group5.setHasFixedSize(true)
+        rootView.calendar_recyclerview_group5.layoutManager = LinearLayoutManager(activity)
+        rootView.calendar_recyclerview_group5.adapter = GroupCalendarAdapter(activity!!,group5)
     }
 
 }
