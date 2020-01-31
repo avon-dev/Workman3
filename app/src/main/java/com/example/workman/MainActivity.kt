@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val Num = intent.getIntExtra("Fragment",0)
+
         // 툴바 타이틀 변경하기.
         toolbar.title = "홈"
         toolbar.setTitleTextColor(Color.WHITE)
@@ -50,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.container,
                 HomeFragment()).commit()
+        }
+
+        if(Num == 2) {
+            supportFragmentManager.beginTransaction().replace(R.id.container,
+                ScheduleFragment()).commit()
         }
 
     }

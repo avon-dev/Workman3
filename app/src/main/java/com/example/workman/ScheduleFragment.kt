@@ -10,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workman.Adapter.GroupCalendarAdapter
+import com.example.workman.Common.Common
 import com.example.workman.Model.GroupCalendar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
@@ -39,7 +41,7 @@ class ScheduleFragment : Fragment() {
     var cell5 = arrayListOf<Date>()
 
     var i : Int = 0
-    var j : Int = 0
+    var a : Int = 0
 
     // 그룹 5개 변수들
     var group = arrayListOf<GroupCalendar>()
@@ -48,16 +50,22 @@ class ScheduleFragment : Fragment() {
     var group4 = arrayListOf<GroupCalendar>()
     var group5 = arrayListOf<GroupCalendar>()
 
+    val Tgroup = arrayOf("A조","B조","C조","D조")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // 툴바 타이틀 변경하기
-        activity!!.toolbar.title = "근무일정"
+        activity!!.toolbar.title = "근무일정"+Common.selected_Group_Number
         activity!!.toolbar.setTitleTextColor(Color.WHITE)
 
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_schedule, container, false)
+
+        //Toast.makeText(activity, "comon "+Tgroup[0], Toast.LENGTH_LONG).show()
+
+
 
         // 플로팅액션버튼 부분
         // 근무조 설정
@@ -136,6 +144,17 @@ class ScheduleFragment : Fragment() {
 
     // 그룹 부분 파트
     fun CalendarGroupSet(){
+        while (a < Common.selected_Group_Number) {
+            group.add(GroupCalendar(0,Tgroup[a]))
+            group2.add(GroupCalendar(0,Tgroup[a]))
+            group3.add(GroupCalendar(0,Tgroup[a]))
+            group4.add(GroupCalendar(0,Tgroup[a]))
+            if(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH) > 28) { // 마지막주차가 28일보다 높다면...
+                group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,Tgroup[a]))
+            }
+            a++
+        }
+        /*
         group.add(GroupCalendar(0,"A조"))
         group.add(GroupCalendar(0,"B조"))
         group.add(GroupCalendar(0,"C조"))
@@ -154,6 +173,7 @@ class ScheduleFragment : Fragment() {
             group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,"B조"))
             group5.add(GroupCalendar(currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)-28,"C조"))
         }
+        */
     }
 
     // 달력 채워넣기. (셀채우기, 1주차부터 5주차까지 각 일수 채우기)
@@ -205,7 +225,7 @@ class ScheduleFragment : Fragment() {
         cell3.clear()
         cell4.clear()
         cell5.clear()
-
+        a = 0
         group.clear()
         group2.clear()
         group3.clear()
