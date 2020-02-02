@@ -72,13 +72,11 @@ class RingtoneService : Service(){
         var notification : Notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Alarm is going off")
             .setSmallIcon(R.mipmap.ic_launcher)
-//            .setSound(defaultSoundUri)
             .setContentText("Click Me")
             .setContentIntent(pi)
             .setAutoCancel(true)
             .build()
 
-//        notify_manager.notify(0,notification)
         startForeground(1,notification)
     }
 
