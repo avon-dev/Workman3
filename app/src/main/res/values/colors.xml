@@ -15,4 +15,6 @@
     <color name="green">#008000</color>
     <color name="mint">#CFFFE5</color>
     <color name="transparentblue">#804169E1</color>
+    <color name="off">#FF8D8D8D</color>
+    <color name="on">#7FC4A6</color>
 </resources>
