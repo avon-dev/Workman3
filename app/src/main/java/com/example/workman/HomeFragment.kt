@@ -30,8 +30,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback{
         // Inflate the layout for this fragment
 
         // 툴바 타이틀 변경하기
-//        activity!!.toolbar.title = "홈"
-//        activity!!.toolbar.setTitleTextColor(Color.WHITE)
+        activity!!.toolbar.title = "Workman"
+        activity!!.toolbar.setTitleTextColor(Color.WHITE)
 
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 

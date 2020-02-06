@@ -25,6 +25,15 @@
         <item>근무 1시간 반 전에 울림</item>
         <item>근무 2시간 전에 울림</item>
     </string-array>
+    <string name="add_intent">ADD_INTENT</string>
+    <string name="off_intent">OFF_INTENT</string>
+    <string name="no_alarm_text">No alarms</string>
+    <string name="save_button">save</string>
+    <string name="remove_alarm">알람을 삭제합니다.</string>
+    <string name="remove_alarm_message">알람을 삭제하시겠습니까?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
     <string name="invite">초대하기</string>
     <string name="going_to_work">출근하기</string>
     <string name="going_home">퇴근하기</string>

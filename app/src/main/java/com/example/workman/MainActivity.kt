@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val Num = intent.getIntExtra("Fragment",0)
 
         // 툴바 타이틀 변경하기.
-        toolbar.title = "홈"
+        toolbar.title = "Workman"
         toolbar.setTitleTextColor(Color.WHITE)
 
 

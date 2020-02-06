@@ -31,7 +31,7 @@ class Add_Work_Location : AppCompatActivity() {
 
         // 생성하기 버튼을 눌렀을때 회사가 생성이 되고 메인 액티비티 화면으로 이동한다.
         button_create_company.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Select_Company::class.java)
             startActivity(intent)
             finish()
         }

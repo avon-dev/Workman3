@@ -6,213 +6,292 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".View.Create_Alarm.Create_Alarm">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#7FC4A6"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/set_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="알람 설정하기"
-            android:textColor="@android:color/white"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오전"
-            android:textSize="18dp"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6:00"
-            android:textSize="50dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="요일 반복"
-            android:textSize="17dp" />
-
-        <CheckBox
-            android:id="@+id/checkBox_Day_of_week_repeat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:checked="false" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/button_Day_of_week"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/button_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="일" />
-
-        <Button
-            android:id="@+id/button_mon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="월" />
-
-        <Button
-            android:id="@+id/button_tues"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="화" />
-
-        <Button
-            android:id="@+id/button_wed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="수" />
-
-        <Button
-            android:id="@+id/button_thur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="목" />
-
-        <Button
-            android:id="@+id/button_fri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="금" />
-
-        <Button
-            android:id="@+id/button_sat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="토" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="근무조에 따라 울림"
-            android:textSize="17dp" />
-
-        <CheckBox
-            android:id="@+id/checkBox_Working_hours_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-
-    <Spinner
-        android:id="@+id/spinner_Working_hours_alarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="알림음"
-            android:textSize="17dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-
-        <TextView
-            android:id="@+id/textView14"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="TextView" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#7FC4A6"
+                tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/set_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="알람 설정하기"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
 
-            android:text="다시 울림"
-            android:textSize="17dp"
-            android:layout_marginLeft="20dp"/>
+            <TimePicker
+                android:id="@+id/alarm_timepicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner">
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="TextView" />
-    </LinearLayout>
+            </TimePicker>
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="생성하기"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="요일 반복"
+                    android:textSize="17dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_Day_of_week_repeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_Day_of_week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <CheckBox
+                    android:id="@+id/check_day_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+                <CheckBox
+                    android:id="@+id/check_day_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CheckBox"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"/>
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_sun"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="일" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_mon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="월" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_tues"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="화" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_wed"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="수" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_thur"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="목" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_fri"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="금" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button_sat"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="토" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="근무조에 따라 울림"
+                    android:textSize="17dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_Working_hours_alarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_Working_hours_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="알림음"
+                    android:textSize="17dp" />
+
+
+                <TextView
+                    android:id="@+id/alarm_sound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:hint="알림음을 설정해주세요." />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="20dp"
+                    android:text="다시 울림"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_make_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:text="생성하기" />
+
+            <Button
+                android:id="@+id/button_cancel_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:text="취소" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
