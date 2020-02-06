@@ -65,8 +65,6 @@ class ScheduleFragment : Fragment() {
 
         //Toast.makeText(activity, "comon "+Tgroup[0], Toast.LENGTH_LONG).show()
 
-
-
         // 플로팅액션버튼 부분
         // 근무조 설정
         rootView.f_schedule_Floating_menu_item1.setOnClickListener {
@@ -80,10 +78,8 @@ class ScheduleFragment : Fragment() {
             startActivity(nextIntent)
         }
 
-        // 달력부분(보이는 형식)
-        dateFormat = DATE_FORMAT
-
         // update 달력 타이틀
+        dateFormat = DATE_FORMAT
         val sdf : DateFormat = SimpleDateFormat(dateFormat)
         rootView.calendar_current_title.setText(sdf.format(currentDate.time))
 
@@ -116,7 +112,7 @@ class ScheduleFragment : Fragment() {
         }
         // update 달력 타이틀 끝.
 
-        // 달력 최종호출
+        // 메인 부분 달력 최종호출
         CalendarGet(rootView)
 
         return rootView
