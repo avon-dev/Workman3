@@ -30,10 +30,14 @@ class HomeFragment : Fragment(), OnMapReadyCallback{
         savedInstanceState: Bundle?
     ): View? {
 
-        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+        // Inflate the layout for this fragment
 
+        // 툴바 타이틀 변경하기
         activity!!.toolbar.title = "Workman"
         activity!!.toolbar.setTitleTextColor(Color.WHITE)
+
+        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+
         // 초대하기 버튼 선언
         val invite = rootView.findViewById<Button>(R.id.button)
 
