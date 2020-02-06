@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,120 +9,131 @@
     tools:context=".View.Register.RegisterActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView43"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="50dp"
-        android:textStyle="bold"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="50sp"
         android:textColor="#50A3F5"
-        android:text="회 원 가 입"
-        />
+        android:text="회원가입" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
-        <EditText
-            android:id="@+id/register_email"
+        <ScrollView
+            android:id="@+id/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/email_login_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/register_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="이메일"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/register_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="비밀번호"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/register_password2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="비밀번호 확인"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/register_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="이름"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/register_phonenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="연락처"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/regster_complete_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:backgroundTint="#50A3F5"
+                    android:text="회원가입 완료"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/join_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="9"
-            android:ems="10"
-            android:hint="이메일 입력"
-            android:inputType="textEmailAddress" />
-
-        <Button
-            android:id="@+id/id_check_btn"
-            android:layout_width="73dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#50A3F5"
-            android:text="중복확인"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/register_password"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:maxLength="12"
-        android:ems="10"
-        android:hint="비밀번호 입력"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/register_password2"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:maxLength="12"
-        android:ems="10"
-        android:hint="비밀번호 확인 입력"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/register_username"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="이름 입력"
-        android:inputType="textPersonName" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/register_phonenumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="9"
-            android:ems="10"
-            android:hint="연락처 입력"
-            android:inputType="number"
-            android:digits="0123456789"/>
-
-        <Button
-            android:id="@+id/phonenumber_check_btn"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_width="73dp"
-            android:backgroundTint="#50A3F5"
-            android:textColor="#FFFFFF"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="인증하기" />
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/regster_complete_btn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="80dp"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#50A3F5"
-        android:text="회원가입 완료" />
-
-
+    </FrameLayout>
 </LinearLayout>

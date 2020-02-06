@@ -24,11 +24,12 @@
         <activity android:name=".View.Create_Company.Create_Company" />
         <activity android:name=".View.Create_Alarm.Create_Alarm"></activity>
         <activity android:name=".View.StartPage.StartPageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
         </activity>
         <activity android:name=".View.Register.RegisterActivity" />
         <activity android:name=".ScheduleDetail" />
@@ -56,6 +57,8 @@
 <!--        <service-->
 <!--            android:name=".View.Create_Alarm.RingtoneService"-->
 <!--            android:enabled="true" />-->
+
+       
     </application>
 
 </manifest>

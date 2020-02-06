@@ -6,7 +6,6 @@
     <string name="alarm">알람</string>
     <string name="menu">더보기</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    회사 만들기창에서 인원수를 정하는 스피너 아이템 리스트   -->
