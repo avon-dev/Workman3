@@ -14,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -31,6 +32,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback{
 
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
+        activity!!.toolbar.title = "Workman"
+        activity!!.toolbar.setTitleTextColor(Color.WHITE)
         // 초대하기 버튼 선언
         val invite = rootView.findViewById<Button>(R.id.button)
 
