@@ -1,22 +1,24 @@
 package com.example.workman.Network
 
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiClient {
-    private const val BASE_URL = "http://ec2-54-180-145-251.ap-northeast-2.compute.amazonaws.coms:3000"
+object RetrofitClient {
+    private const val BaseURL = "http://54.180.89.175:3000/"
     private var retrofit: Retrofit? = null
-    val apiClient: Retrofit?
+    val instance: Retrofit
         get() {
-            if (retrofit == null) {
+            if (retrofit == null)
                 retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BaseURL)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-            }
-            return retrofit
+            return retrofit!!
         }
 }
-//private const val BASE_URL = "localhost:3000"
+
+
 
 
