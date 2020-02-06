@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
- * A simple [Fragment] subclass.
+ * 출퇴근 상세보기 화면
  */
 class TimeDetailFragment : Fragment() {
 
@@ -17,12 +17,14 @@ class TimeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_time_detail, container, false)
 
-        val btnRequest = rootView.findViewById<FloatingActionButton>(R.id.floatingActionButton2)
+        // 출퇴근 기록 수정 요청 버튼 선언
+        val request = rootView.findViewById<FloatingActionButton>(R.id.floatingActionButton2)
 
-        btnRequest.setOnClickListener {
+        // 출퇴근 기록 수정 요청 버튼 클릭 이벤트
+        request.setOnClickListener {
+            // 출퇴근 기록 수정 요청 화면으로 이동
             activity!!.supportFragmentManager.beginTransaction().replace(R.id.container, TimeRequestFragment()).addToBackStack(null).commit()
         }
 

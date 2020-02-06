@@ -1,19 +1,20 @@
 package com.example.workman
-import android.graphics.Color
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.Button
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+
 
 /**
  * 홈
@@ -21,23 +22,19 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class HomeFragment : Fragment(), OnMapReadyCallback{
 
-    private lateinit var mapView: MapView
+    private lateinit var mapView: MapView // 구글 맵 뷰 위젯
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
-        // 툴바 타이틀 변경하기
-//        activity!!.toolbar.title = "홈"
-//        activity!!.toolbar.setTitleTextColor(Color.WHITE)
 
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // 초대하기 버튼 선언
         val invite = rootView.findViewById<Button>(R.id.button)
 
-        // 초대하기 버튼 클릭
+        // 초대하기 버튼 클릭 이벤트
         invite.setOnClickListener {
             // 직원 초대하는 화면으로 이동
             activity!!.supportFragmentManager.beginTransaction().replace(R.id.container, InviteFragment()).addToBackStack(null).commit()
@@ -54,18 +51,37 @@ class HomeFragment : Fragment(), OnMapReadyCallback{
         mapView.getMapAsync(this)
     }
 
-    override fun onMapReady(p0: GoogleMap) {
+    override fun onMapReady(googleMap: GoogleMap) {
 
-        val seoul = LatLng(37.566, 126.978)
-        p0.moveCamera(CameraUpdateFactory.newLatLng(seoul))
-        p0.moveCamera(CameraUpdateFactory.zoomTo(10f))
+        /**
+         *
+         */
 
-        val marker =
-            MarkerOptions()
-                .position(seoul)
-                .title("서울")
-                .snippet("아름다운 도시")
-        p0.addMarker(marker)
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(10f))
+        googleMap.isMyLocationEnabled = true
+
+        onAddMarker(googleMap)
+
+    }
+
+    // 지정된 위치 반경 원 표시
+    private fun onAddMarker(googleMap: GoogleMap) {
+
+        //위도 경도
+        val mLatitude = 37.5197889   //위도
+        val mLongitude = 126.9403083  //경도
+
+        val position =  LatLng(mLatitude, mLongitude)
+        val myMarker = MarkerOptions().position(position)
+
+        val circleOptions = CircleOptions()
+        circleOptions.center(position)
+            .radius(1000.0)
+            .strokeWidth(0f)
+            .fillColor(Color.parseColor("#880000ff"))
+
+        googleMap.addMarker(myMarker)
+        googleMap.addCircle(circleOptions)
 
     }
 
@@ -98,5 +114,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback{
         mapView.onLowMemory()
         super.onLowMemory()
     }
+
+
 
 }
