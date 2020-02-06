@@ -51,7 +51,7 @@ class AlarmFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+//1234
         // 툴바 타이틀 변경하기.
         activity!!.toolbar.title = "알람"
         activity!!.toolbar.setTitleTextColor(Color.WHITE)
