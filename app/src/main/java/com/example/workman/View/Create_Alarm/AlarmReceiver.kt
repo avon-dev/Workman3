@@ -22,8 +22,10 @@ class AlarmReceiver : BroadcastReceiver() {
 
             when (intentType) {
                 ADD_INTENT -> {
+                    var alarm_melody = intent.extras?.getString("alarm_melody")
                     pendingId = intent.extras?.getInt("PendingId") as Int
                     intentToService.putExtra("ON_OFF", ADD_INTENT)
+                    intentToService.putExtra("alarm_melody",alarm_melody)
                     context.startService(intentToService)
                 }
                 OFF_INTENT -> {

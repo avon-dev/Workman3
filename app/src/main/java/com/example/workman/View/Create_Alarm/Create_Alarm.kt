@@ -36,7 +36,7 @@ class Create_Alarm : AppCompatActivity() {
     var min: Int = 0
     lateinit var pi: PendingIntent
     private lateinit var alarm :Alarm
-
+    private var melody : String? = null
     private var timePicker :TimePicker? = null
     private var applyButton :Button? = null
     private val checkBoxDays = ArrayList<CheckBox>()
@@ -54,7 +54,7 @@ class Create_Alarm : AppCompatActivity() {
             for(t in alarm.days zip checkBoxDays ){
                 t.second.isChecked = t.first
             }
-            if (alarm.melody != null){
+            if (alarm.melody != null ){
                 mRtCurrent = RingtoneManager.getRingtone(this, Uri.parse(alarm.melody))
                 alarm_sound.text = alarm.melody_name
             }
@@ -65,13 +65,18 @@ class Create_Alarm : AppCompatActivity() {
             t.first.text = t.second
         }
         applyButton?.setOnClickListener {
-
             //set data
             val hourNminute = getTimepickerTime(timePicker)
             alarm.hour = hourNminute.first
             alarm.minute = hourNminute.second
-            alarm.melody = mRtCurrent.toString()
-            alarm.melody_name = mRtCurrent.getTitle(this)
+            if (alarm_sound.text.isEmpty()){
+                Toast.makeText(this,"알람음을 설정해주세요.",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }else {
+                Log.d("alarm_ringtone",mRtCurrent.toString())
+                alarm.melody = melody
+                alarm.melody_name = mRtCurrent.getTitle(this)
+            }
             for((i,box) in checkBoxDays.withIndex()){
                 alarm.days[i]=box.isChecked
             }
@@ -297,7 +302,8 @@ class Create_Alarm : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 // -- 알림음 재생하는 코드 -- //
                 var ring = data!!.getParcelableExtra<Uri>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
-
+                Log.d("select_Alarm_ringtone",ring.toString())
+                melody = ring.toString()
                 if (ring != null) {
                     m_strRingToneUri = ring.toString()
                     alarm_sound.text = ring.toString()

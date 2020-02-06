@@ -85,12 +85,6 @@ class AlarmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bindViews()
-
-//        floatingActionButton_Create_Alarm!!.setOnClickListener {
-//            val intent = Intent(context, Create_Alarm::class.java)
-//            startActivity(intent)
-//        }
-
     }
 
     private fun bindViews() {
@@ -209,6 +203,7 @@ class AlarmFragment : Fragment() {
         intent.putExtra("intentType", getString(R.string.add_intent))
         // put id to intent
         intent.putExtra("pendingId", alarm.id)
+        intent.putExtra("alarm_melody",alarm.melody)
         // this pendingIntent include alarm id  to manage
         val alarmIntent = PendingIntent.getBroadcast(context, alarm.id, intent, flags)
         // create alarm manager ALARM_SERVICE
