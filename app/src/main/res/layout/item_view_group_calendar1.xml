@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/holo_blue_light"
             android:id="@+id/ItemView_Group_Calendar1_TextView_name"
             android:layout_width="28dp"
@@ -24,7 +24,7 @@
             android:text="A조" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView1"
             android:layout_width="28dp"
@@ -34,7 +34,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView2"
             android:layout_width="28dp"
@@ -44,7 +44,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView3"
             android:layout_width="28dp"
@@ -54,7 +54,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView4"
             android:layout_width="28dp"
@@ -64,7 +64,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView5"
             android:layout_width="28dp"
@@ -74,7 +74,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView6"
             android:layout_width="28dp"
@@ -84,7 +84,7 @@
             android:text="3" />
 
         <TextView
-            android:layout_margin="0.3dp"
+            android:layout_margin="0.5dp"
             android:background="@android:color/white"
             android:id="@+id/ItemView_Group_Calendar1_TextView7"
             android:layout_width="28dp"
