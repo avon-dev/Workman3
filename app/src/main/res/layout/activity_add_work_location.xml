@@ -61,15 +61,21 @@
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
 
-            <com.google.android.gms.maps.MapView
+<!--            <com.google.android.gms.maps.MapView-->
+<!--                android:id="@+id/mapView_add_work_location"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="404dp" />-->
+            <fragment
                 android:id="@+id/mapView_add_work_location"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="404dp" />
+                android:layout_height="404dp"
+                tools:context="com.example.workman.View.Add_Work_Location.Add_Work_Location" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"/>
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="10dp"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
