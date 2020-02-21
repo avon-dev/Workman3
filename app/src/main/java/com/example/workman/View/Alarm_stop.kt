@@ -25,37 +25,25 @@ class Alarm_stop : AppCompatActivity() {
 
 
         seekBar2.setOnSeekBarChangeListener(Seekbarchage())
-//        if (seekBar2.progress >= 80) {
-//            var intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        } else {
-//            seekBar2.progress = 0
+
 
     }
 
     inner class Seekbarchage : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-//            if (seekBar2.progress >= 80) {
-//                var intent = Intent(this@Alarm_stop, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//            } else {
-//                seekBar2.progress = 0
-//            }
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            if (seekBar2.progress >= 80) {
+            if (seekBar?.progress!! >= 90) {
                 var intent = Intent(this@Alarm_stop, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            } else {
-                seekBar2.progress = 0
             }
         }
 
+        override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+        }
+
         override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            seekBar?.progress = 0
         }
 
     }
