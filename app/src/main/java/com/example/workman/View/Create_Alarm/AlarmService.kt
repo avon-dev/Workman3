@@ -31,33 +31,7 @@ class AlarmService: Service(){
         var alarm_melody = intent?.extras?.getString("alarm_melody")
         when(onOff){
             ADD_INTENT->{
-//                val uri = Settings.System.DEFAULT_ALARM_ALERT_URI
-//                mediaPlayer = MediaPlayer.create(this, uri)
-//                mediaPlayer?.start()
-//                var stop_activity_intent : Intent = Intent(this,Alarm_stop::class.java)
-//                var pi : PendingIntent = PendingIntent.getActivity(this,0,stop_activity_intent,0)
-//                val CHANNEL_ID = "default"
-//                val channel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    NotificationChannel(
-//                        CHANNEL_ID,
-//                        "Channel human readable title",
-//                        NotificationManager.IMPORTANCE_DEFAULT
-//                    )
-//                } else {
-//                    TODO("VERSION.SDK_INT < O")
-//                }
-//
-//                (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-//                    channel
-//                )
-//                var notification : Notification = NotificationCompat.Builder(this, CHANNEL_ID)
-//                    .setContentTitle("Alarm is going off")
-//                    .setSmallIcon(R.mipmap.ic_launcher)
-//                    .setContentText("Click Me")
-//                    .setContentIntent(pi)
-//                    .setAutoCancel(true)
-//                    .build()
-//                startForeground(1,notification)
+                fireNotification()
                 var URi = Uri.parse(alarm_melody)
                 r = RingtoneManager.getRingtone(this,URi)
                 Log.d("Alarm_Ringtone",r?.getTitle(this).toString())
@@ -77,7 +51,34 @@ class AlarmService: Service(){
 
         return START_STICKY
     }
+    private fun fireNotification() {
+        var stop_activity_intent : Intent = Intent(this,Alarm_stop::class.java)
+        var pi : PendingIntent = PendingIntent.getActivity(this,0,stop_activity_intent,0)
+        val CHANNEL_ID = "default"
+        val channel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel(
+                CHANNEL_ID,
+                "Channel human readable title",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+        } else {
+            TODO("VERSION.SDK_INT < O")
+        }
 
+        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
+            channel
+        )
+//        var notify_manager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        var notification : Notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("Alarm is going off")
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentText("Click Me")
+            .setContentIntent(pi)
+            .setAutoCancel(true)
+            .build()
+
+        startForeground(1,notification)
+    }
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer?.stop()
