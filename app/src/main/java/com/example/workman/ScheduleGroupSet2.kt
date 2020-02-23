@@ -3,8 +3,7 @@ package com.example.workman
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.workman.Common.Common
+import com.example.workman.Retrofit.Common
 import kotlinx.android.synthetic.main.activity_schedule_group_set2.*
 
 class ScheduleGroupSet2 : AppCompatActivity() {

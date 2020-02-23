@@ -5,18 +5,23 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workman.Adapter.GroupCalendarAdapter
-import com.example.workman.Common.Common
-import com.example.workman.Model.GroupCalendar
+import com.example.workman.Model.*
+import com.example.workman.Retrofit.Common
+import com.example.workman.Retrofit.ServicApi
+import com.google.gson.Gson
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import kotlinx.android.synthetic.main.fragment_schedule.view.*
@@ -31,7 +36,7 @@ class ScheduleFragment : Fragment() {
     // 달력 부분 생성
     val DATE_FORMAT : String = "yyyy MMMM"
     var dateFormat : String = ""
-    val currentDate = Calendar.getInstance()
+    var currentDate = Calendar.getInstance()
     var calendar = currentDate.clone() as Calendar
     // 달력 5개 변수들
     var cell = arrayListOf<Date>()
@@ -50,20 +55,38 @@ class ScheduleFragment : Fragment() {
     var group4 = arrayListOf<GroupCalendar>()
     var group5 = arrayListOf<GroupCalendar>()
 
-    val Tgroup = arrayOf("A조","B조","C조","D조")
+    val Tgroup = arrayOf("1조","2조","3조","4조","5조","6조","7조")
+
+    // Json 형식부분.
+    var gson = Gson()
+    var C_group = arrayListOf<C_Group>()
+    var C_calendar = arrayListOf<C_Calendar>()
+    var C_calendarDay = arrayListOf<C_CalendarDay>()
+    var C_calendarGroup = arrayListOf<C_CalendarGroup>()
+
+    lateinit var myAPI:ServicApi
+    var compositeDisposable = CompositeDisposable()
+
+    // ctrl+O
+    override fun onStop() {
+        compositeDisposable.clear()
+        super.onStop()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // 툴바 타이틀 변경하기
-        activity!!.toolbar.title = "근무일정"+Common.selected_Group_Number
+        activity!!.toolbar.title = "근무일정"+ Common.selected_Group_Number
         activity!!.toolbar.setTitleTextColor(Color.WHITE)
 
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_schedule, container, false)
 
         //Toast.makeText(activity, "comon "+Tgroup[0], Toast.LENGTH_LONG).show()
+
+        myAPI = Common.api
 
         // 플로팅액션버튼 부분
         // 근무조 설정
@@ -82,6 +105,38 @@ class ScheduleFragment : Fragment() {
         dateFormat = DATE_FORMAT
         val sdf : DateFormat = SimpleDateFormat(dateFormat)
         rootView.calendar_current_title.setText(sdf.format(currentDate.time))
+
+        // Json 형식
+        // 각 그룹형식
+        for (i in 0..2){
+            C_calendarGroup.add(C_CalendarGroup(Tgroup[i],i+1))
+        }
+        //Toast.makeText(activity, "현재월의 총일은 "+currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)+" 현재월은 "+currentDate.get(Calendar.MONTH), Toast.LENGTH_LONG).show()
+
+        // 각월에따른 일수 형식
+        C_calendarDay = arrayListOf<C_CalendarDay>()
+        for(i in 1..currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)){
+            C_calendarDay.add(C_CalendarDay(i,C_calendarGroup))
+        }
+        C_calendar.add(C_Calendar(C_calendarDay,currentDate.get(Calendar.MONTH)+1,currentDate.get(Calendar.YEAR)))
+
+        currentDate.add(Calendar.MONTH,1)
+        C_calendarDay = arrayListOf<C_CalendarDay>()
+        for(i in 1..currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)){
+            C_calendarDay.add(C_CalendarDay(i,C_calendarGroup))
+        }
+        C_calendar.add(C_Calendar(C_calendarDay,currentDate.get(Calendar.MONTH)+1,currentDate.get(Calendar.YEAR)))
+
+        currentDate.add(Calendar.MONTH,1)
+        C_calendarDay = arrayListOf<C_CalendarDay>()
+        for(i in 1..currentDate.getActualMaximum(Calendar.DAY_OF_MONTH)){
+            C_calendarDay.add(C_CalendarDay(i,C_calendarGroup))
+        }
+        C_calendar.add(C_Calendar(C_calendarDay,currentDate.get(Calendar.MONTH)+1,currentDate.get(Calendar.YEAR)))
+
+
+        // JSON 집어넣을때 날짜 건드린거 다시 초기화.
+        currentDate = Calendar.getInstance()
 
         // 이전달 클릭
         rootView.calendar_prev_text.setOnClickListener {
@@ -109,11 +164,47 @@ class ScheduleFragment : Fragment() {
 
             // 달력 최종호출
             CalendarGet(rootView)
+
+            // Json 형식 저장
+            val json:String
+            json = gson.toJson(C_calendar)
+
+            compositeDisposable.add(myAPI.c_group_up("회사명","유저이름",Common.selected_Group_Number,json)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ menu2List ->
+                    Toast.makeText(activity,""+menu2List, Toast.LENGTH_SHORT).show()
+                },
+                    {thr ->
+                        Toast.makeText(activity,""+thr.message, Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", thr.message)
+                    }))
+
+
+            /*
+            // from json (json 형태로 제대로 되있나 확인)
+            var UnitList2 = arrayListOf<Unit>()
+            UnitList2 = gson.fromJson(json,object : TypeToken<ArrayList<Unit>>() {}.type)
+            Recipe_material_title.setText("")
+            Recipe_material_unit.setText("")
+             */
         }
         // update 달력 타이틀 끝.
 
         // 메인 부분 달력 최종호출
         CalendarGet(rootView)
+
+        // 서버에잇는 달력 출력 테스트
+        compositeDisposable.add(myAPI.c_group("회사명3")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ menu2List ->
+                Toast.makeText(activity,"서버 불러오기 : "+menu2List[0].g_number, Toast.LENGTH_SHORT).show()
+            },
+                {thr ->
+                    Toast.makeText(activity,""+thr.message, Toast.LENGTH_SHORT).show()
+                    Log.e("TAG", thr.message)
+                }))
 
         return rootView
     }
